@@ -25,9 +25,11 @@ const copy = {
   es: {
     nav: {
       flagship: "Flagship",
+      depth: "Ingeniería",
       portfolio: "Portfolio",
       evidence: "Evidencia",
       method: "Método",
+      engagement: "Colaboración",
     },
     skip: "Saltar al contenido",
     heroEyebrow: "CROHNOZ SYSTEMS · PUBLIC ENGINEERING SURFACE",
@@ -46,15 +48,25 @@ const copy = {
       "El sistema más maduro del portfolio. La evidencia pública se concentra en modelado de dominio, integridad backend, lifecycle operacional, privacidad, regresiones y entrega controlada.",
     openCase: "Engineering case study",
     openDemo: "Safe live demo",
-    productPortfolio: "Product portfolio",
-    productPortfolioText:
-      "Los productos experimentales se muestran con su nivel real de madurez. No se presentan como equivalentes al flagship.",
+    depthTitle: "Profundidad por problema, no por cantidad de badges.",
+    depthText:
+      "La tecnología es secundaria al contrato operacional que debe hacer cumplir. Estas son las capas que conecto al diseñar y entregar un sistema.",
+    portfolioTitle: "Productos tempranos, presentados con madurez honesta.",
+    portfolioText:
+      "Los experimentos permanecen visibles porque prueban capacidades distintas, pero ninguno recibe el mismo peso que el flagship mientras la evidencia no lo justifique.",
+    maturityTitle: "La madurez es una afirmación de evidencia.",
+    maturityText:
+      "Un build desplegable, una UI pulida o muchas líneas de código no suben el nivel por sí solos. Cada sistema avanza cuando la operación lo demuestra.",
     operationalEvidence: "Selected operational evidence",
     operationalEvidenceText:
       "Sistemas concretos que demuestran reglas operacionales y decisiones de arquitectura sin inflar su alcance comercial.",
     methodTitle: "De problema a evidencia",
     methodText:
       "El stack viene después del entendimiento operacional. Seguridad, privacidad, pruebas y continuidad forman parte del producto desde el diseño.",
+    engagementTitle: "Dónde este enfoque genera más valor.",
+    engagementText:
+      "El mejor encaje es cuando el problema exige entender una operación, modelar sus reglas y convertirlas en software confiable, no simplemente acumular features.",
+    inspectFirst: "Revisar evidencia primero",
     boundaryTitle: "Public by design. Private by default.",
     boundaryText:
       "La evidencia pública puede mostrar problemas, arquitectura sanitizada, demos y decisiones de ingeniería. Credenciales, datos reales, topología privada y lógica confidencial permanecen fuera del escaparate.",
@@ -65,13 +77,16 @@ const copy = {
     repoLink: "Abrir repositorio",
     liveDemo: "Demo pública",
     languageLabel: "Idioma",
+    current: "Actual",
   },
   en: {
     nav: {
       flagship: "Flagship",
+      depth: "Engineering",
       portfolio: "Portfolio",
       evidence: "Evidence",
       method: "Method",
+      engagement: "Engagement",
     },
     skip: "Skip to content",
     heroEyebrow: "CROHNOZ SYSTEMS · PUBLIC ENGINEERING SURFACE",
@@ -90,15 +105,25 @@ const copy = {
       "The most mature system in the portfolio. Public evidence focuses on domain modeling, backend integrity, operational lifecycle, privacy, regression thinking and controlled delivery.",
     openCase: "Engineering case study",
     openDemo: "Safe live demo",
-    productPortfolio: "Product portfolio",
-    productPortfolioText:
-      "Experimental products are shown at their actual maturity level. They are not presented as equivalent to the flagship.",
+    depthTitle: "Depth by problem domain, not badge count.",
+    depthText:
+      "Technology is secondary to the operational contract it must enforce. These are the layers I connect when designing and delivering a system.",
+    portfolioTitle: "Early products, shown at honest maturity.",
+    portfolioText:
+      "Experiments remain visible because they prove different capabilities, but none receives flagship weight until the evidence supports it.",
+    maturityTitle: "Maturity is an evidence claim.",
+    maturityText:
+      "A deployable build, polished UI or large codebase does not advance a level by itself. Each system moves when the operation proves it.",
     operationalEvidence: "Selected operational evidence",
     operationalEvidenceText:
       "Concrete systems that demonstrate operational rules and architecture decisions without inflating commercial scope.",
     methodTitle: "From problem to evidence",
     methodText:
       "The stack comes after operational understanding. Security, privacy, testing and continuity are product concerns from the design stage.",
+    engagementTitle: "Where this approach creates the most value.",
+    engagementText:
+      "The best fit is when the challenge requires understanding an operation, modeling its rules and turning them into reliable software—not simply accumulating features.",
+    inspectFirst: "Inspect evidence first",
     boundaryTitle: "Public by design. Private by default.",
     boundaryText:
       "Public evidence may show problems, sanitized architecture, demos and engineering decisions. Credentials, real data, private topology and confidential logic stay outside the storefront.",
@@ -109,6 +134,7 @@ const copy = {
     repoLink: "Open repository",
     liveDemo: "Public demo",
     languageLabel: "Language",
+    current: "Current",
   },
 };
 
@@ -147,6 +173,155 @@ const products = [
     href: LINKS.inclume,
     evidenceHref: LINKS.inclumeCase,
     demoHref: LINKS.inclumeDemo,
+  },
+];
+
+const capabilities = [
+  {
+    title: "PRODUCT SYSTEMS",
+    accent: "border-blue-400/30",
+    description: {
+      es: "Discovery · UX · modelado de dominio · arquitectura de producto · diseño de workflows.",
+      en: "Discovery · UX · domain modeling · product architecture · workflow design.",
+    },
+    outcome: {
+      es: "Fricción operacional → requisitos explícitos.",
+      en: "Operational friction → explicit requirements.",
+    },
+  },
+  {
+    title: "BACKEND & DATA",
+    accent: "border-cyan-400/30",
+    description: {
+      es: "Django · APIs · PostgreSQL · integridad · estados · tenancy · contratos server-side.",
+      en: "Django · APIs · PostgreSQL · integrity · state · tenancy · server-side contracts.",
+    },
+    outcome: {
+      es: "Las reglas viven donde pueden hacerse cumplir.",
+      en: "Rules live where they can be enforced.",
+    },
+  },
+  {
+    title: "SECURITY & TRUST",
+    accent: "border-violet-400/30",
+    description: {
+      es: "RBAC · privacidad · validación · auditoría · límites público/privado.",
+      en: "RBAC · privacy · validation · auditability · public/private boundaries.",
+    },
+    outcome: {
+      es: "Seguridad integrada a la arquitectura.",
+      en: "Security integrated into architecture.",
+    },
+  },
+  {
+    title: "OPERATIONS",
+    accent: "border-purple-400/30",
+    description: {
+      es: "CI/CD · staging · observabilidad · despliegue · continuidad · FinOps.",
+      en: "CI/CD · staging · observability · deployment · continuity · FinOps.",
+    },
+    outcome: {
+      es: "El producto continúa después del localhost.",
+      en: "The product continues beyond localhost.",
+    },
+  },
+  {
+    title: "AI & AUTOMATION",
+    accent: "border-fuchsia-400/30",
+    description: {
+      es: "Agentes · workflows · inteligencia operacional · reporting · human-in-the-loop.",
+      en: "Agents · workflows · operational intelligence · reporting · human-in-the-loop.",
+    },
+    outcome: {
+      es: "Automatizar sólo donde existe valor operacional.",
+      en: "Automate only where operational value exists.",
+    },
+  },
+  {
+    title: "PHYSICAL SYSTEMS",
+    accent: "border-amber-300/30",
+    description: {
+      es: "Linux nodes · dispositivos · electrónica · prototipado 3D · integración edge.",
+      en: "Linux nodes · devices · electronics · 3D prototyping · edge integration.",
+    },
+    outcome: {
+      es: "Software conectado al entorno físico.",
+      en: "Software connected to the physical environment.",
+    },
+  },
+];
+
+const maturityRows = [
+  {
+    name: "FDR",
+    domain: { es: "Operaciones de salud", en: "Healthcare operations" },
+    level: "L2+",
+    stage: "ADVANCED PILOT",
+    width: "72%",
+    dot: "bg-violet-400",
+    bar: "from-fuchsia-500 via-violet-500 to-cyan-400",
+  },
+  {
+    name: "Crohnoz Forge",
+    domain: { es: "Razonamiento de producto", en: "Product reasoning" },
+    level: "L1",
+    stage: "PROTOTYPE / R&D",
+    width: "25%",
+    dot: "bg-blue-400",
+    bar: "from-blue-500 to-cyan-400",
+  },
+  {
+    name: "Fresh Market",
+    domain: { es: "Operaciones de retail fresco", en: "Fresh-retail operations" },
+    level: "L1",
+    stage: "PROTOTYPE / R&D",
+    width: "25%",
+    dot: "bg-cyan-400",
+    bar: "from-cyan-500 to-blue-400",
+  },
+  {
+    name: "IncluMe",
+    domain: { es: "Accesibilidad / civic product", en: "Accessibility / civic product" },
+    level: "L1",
+    stage: "EARLY PRODUCT",
+    width: "25%",
+    dot: "bg-fuchsia-400",
+    bar: "from-fuchsia-500 to-violet-400",
+  },
+];
+
+const engagements = [
+  {
+    number: "01",
+    title: "PRODUCT & SYSTEMS ARCHITECTURE",
+    description: {
+      es: "Límites de dominio, workflows, decisiones de arquitectura y dirección técnica para productos con operación real detrás.",
+      en: "Domain boundaries, workflows, architecture decisions and technical direction for products with real operations behind them.",
+    },
+  },
+  {
+    number: "02",
+    title: "OPERATIONAL SOFTWARE",
+    description: {
+      es: "Django, APIs, datos e interfaces por rol cuando el software debe representar procesos diarios concretos.",
+      en: "Django, APIs, data and role-aware interfaces when software must represent concrete daily processes.",
+    },
+  },
+  {
+    number: "03",
+    title: "BACKEND INTEGRITY & MODERNIZATION",
+    description: {
+      es: "Scope, autorización, seguridad, testing, observabilidad, CI/CD y reducción de deuda en sistemas existentes.",
+      en: "Scope, authorization, security, testing, observability, CI/CD and debt reduction in existing systems.",
+    },
+  },
+  {
+    number: "04",
+    title: "APPLIED AI & AUTOMATION",
+    description: {
+      es: "Agentes y automatización orientados a operación, con límites explícitos, evidencia y supervisión humana donde corresponde.",
+      en: "Agents and automation for operations, with explicit boundaries, evidence and human oversight where appropriate.",
+    },
   },
 ];
 
@@ -221,9 +396,11 @@ export default function App() {
   const t = copy[lang];
   const navItems = [
     ["#flagship", t.nav.flagship],
+    ["#depth", t.nav.depth],
     ["#portfolio", t.nav.portfolio],
     ["#evidence", t.nav.evidence],
     ["#method", t.nav.method],
+    ["#engagement", t.nav.engagement],
   ];
 
   return (
@@ -251,7 +428,7 @@ export default function App() {
             </div>
           </a>
 
-          <nav className="hidden items-center gap-6 text-sm font-semibold text-white/55 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-5 text-sm font-semibold text-white/55 xl:flex" aria-label="Primary">
             {navItems.map(([href, label]) => (
               <a
                 key={href}
@@ -286,7 +463,7 @@ export default function App() {
         </div>
 
         <nav
-          className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-5 pb-3 lg:hidden"
+          className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-5 pb-3 xl:hidden"
           aria-label="Mobile"
         >
           {navItems.map(([href, label]) => (
@@ -378,13 +555,30 @@ export default function App() {
           </div>
         </section>
 
-        <section id="portfolio" className="scroll-mt-32 border-y border-white/10 bg-white/[0.015]">
+        <section id="depth" className="scroll-mt-32 border-y border-white/10 bg-white/[0.015]">
           <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-            <SectionHeading
-              eyebrow="PRODUCT LAB"
-              title={t.productPortfolio}
-              text={t.productPortfolioText}
-            />
+            <SectionHeading eyebrow="ENGINEERING DEPTH" title={t.depthTitle} text={t.depthText} />
+
+            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {capabilities.map((capability) => (
+                <article
+                  key={capability.title}
+                  className={`rounded-[1.5rem] border bg-[#10111D] p-6 ${capability.accent}`}
+                >
+                  <p className="text-sm font-black tracking-[0.12em] text-white">{capability.title}</p>
+                  <p className="mt-5 text-sm leading-7 text-white/58">{capability.description[lang]}</p>
+                  <p className="mt-6 border-t border-white/10 pt-5 text-sm font-bold text-white/82">
+                    {capability.outcome[lang]}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="portfolio" className="scroll-mt-32">
+          <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <SectionHeading eyebrow="PRODUCT LAB" title={t.portfolioTitle} text={t.portfolioText} />
 
             <div className="mt-12 grid gap-5 lg:grid-cols-3">
               {products.map((product) => (
@@ -417,6 +611,51 @@ export default function App() {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="maturity" className="border-y border-white/10 bg-[#070811]">
+          <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <SectionHeading eyebrow="PORTFOLIO MATURITY" title={t.maturityTitle} text={t.maturityText} />
+
+            <div className="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-[#10111D]">
+              <div className="hidden grid-cols-5 border-b border-white/10 px-7 py-4 text-[0.68rem] font-black uppercase tracking-[0.16em] text-white/35 md:grid">
+                <span>L0 · Idea</span>
+                <span>L1 · Prototype</span>
+                <span>L2 · Pilot</span>
+                <span>L3 · Production</span>
+                <span>L4 · Scale</span>
+              </div>
+
+              <div className="divide-y divide-white/10">
+                {maturityRows.map((item) => (
+                  <article key={item.name} className="grid gap-5 p-6 md:grid-cols-[17rem_1fr] md:items-center md:p-7">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-lg font-black text-white">{item.name}</h3>
+                        <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[0.65rem] font-black uppercase tracking-[0.12em] text-white/70">
+                          {t.current}: {item.level}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm text-white/42">{item.domain[lang]} · {item.stage}</p>
+                    </div>
+
+                    <div>
+                      <div className="relative h-2.5 overflow-hidden rounded-full bg-white/[0.07]">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${item.bar}`}
+                          style={{ width: item.width }}
+                        />
+                      </div>
+                      <div className="mt-2 flex items-center gap-2 text-xs font-bold text-white/45">
+                        <span className={`h-2 w-2 rounded-full ${item.dot}`} />
+                        <span>{item.level} · {item.stage}</span>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -467,16 +706,46 @@ export default function App() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-          <div className="grid gap-8 rounded-[2rem] border border-cyan-400/15 bg-cyan-500/[0.05] p-7 md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <h2 className="text-3xl font-black tracking-[-0.04em] text-white md:text-5xl">
-              {t.boundaryTitle}
-            </h2>
-            <p className="text-base leading-8 text-white/58">{t.boundaryText}</p>
+        <section id="engagement" className="mx-auto scroll-mt-32 max-w-7xl px-5 py-20 lg:px-8">
+          <SectionHeading eyebrow="PROFESSIONAL ENGAGEMENT" title={t.engagementTitle} text={t.engagementText} />
+
+          <div className="mt-12 grid gap-4 md:grid-cols-2">
+            {engagements.map((engagement) => (
+              <article
+                key={engagement.number}
+                className="group rounded-[1.6rem] border border-white/10 bg-gradient-to-br from-white/[0.045] to-transparent p-7 transition hover:border-fuchsia-400/25"
+              >
+                <p className="text-xs font-black tracking-[0.18em] text-fuchsia-300">{engagement.number}</p>
+                <h3 className="mt-5 text-xl font-black tracking-[-0.02em] text-white md:text-2xl">
+                  {engagement.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-white/55 md:text-base">
+                  {engagement.description[lang]}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <ExternalLink href={LINKS.evidence}>{t.inspectFirst}</ExternalLink>
+            <ExternalLink href={LINKS.profile} variant="cyan">
+              {t.openProfile}
+            </ExternalLink>
           </div>
         </section>
 
-        <section className="border-t border-white/10 bg-[#070811]">
+        <section className="border-y border-white/10 bg-white/[0.015]">
+          <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <div className="grid gap-8 rounded-[2rem] border border-cyan-400/15 bg-cyan-500/[0.05] p-7 md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <h2 className="text-3xl font-black tracking-[-0.04em] text-white md:text-5xl">
+                {t.boundaryTitle}
+              </h2>
+              <p className="text-base leading-8 text-white/58">{t.boundaryText}</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#070811]">
           <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-fuchsia-300">CONTACT</p>
             <h2 className="mt-5 max-w-4xl text-4xl font-black tracking-[-0.045em] text-white md:text-6xl">
