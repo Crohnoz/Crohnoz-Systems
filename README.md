@@ -22,11 +22,23 @@
 
 ## Portfolio role
 
-Crohnoz Systems is the public presentation layer for selected work by **Enrique Flores / Crohnoz Labs**. It is deliberately different from a source-code catalog: the goal is to explain **what operational problem exists, how the system is shaped, which engineering decisions matter and what can be inspected safely**.
+Crohnoz Systems is the standalone public presentation layer for selected work by **Enrique Flores / Crohnoz Labs**. It is deliberately different from a source-code catalog: the goal is to explain **what operational problem exists, how the system is shaped, which engineering decisions matter and what can be inspected safely**.
 
 > **Evidence is public by design. Implementation is private by default.**
 
 The surface is bilingual, responsive and built to connect visitors with curated engineering cases without implying that every underlying production repository is open source.
+
+---
+
+## Standalone experience
+
+The web surface now follows the same evidence-first hierarchy as the GitHub profile while remaining useful on its own:
+
+`Founder positioning → FDR flagship → Engineering depth → Product R&D → Portfolio maturity → Operational evidence → Operating model → Professional engagement → Public/private boundary → Contact`
+
+That sequence is intentional. It answers **who builds the systems, what the strongest proof is, what engineering depth exists, how mature the surrounding products are and where the approach is professionally useful** before asking the visitor to make contact.
+
+The responsive navigation exposes the same structure on desktop and mobile, with keyboard focus states, skip navigation, reduced-motion support and explicit ES/EN controls.
 
 ---
 
@@ -44,15 +56,46 @@ Maturity is intentionally explicit. A polished demo does not automatically equal
 
 ---
 
+## Engineering depth represented
+
+The application groups capability by engineering problem rather than by technology count:
+
+| Domain | What the surface communicates |
+|---|---|
+| **Product Systems** | Discovery · UX · domain modeling · product architecture · workflow design |
+| **Backend & Data** | Django · APIs · PostgreSQL · integrity · state · tenancy · server-side contracts |
+| **Security & Trust** | RBAC · privacy · validation · auditability · public/private boundaries |
+| **Operations** | CI/CD · staging · observability · deployment · continuity · FinOps |
+| **AI & Automation** | Agents · workflows · operational intelligence · reporting · human-in-the-loop |
+| **Physical Systems** | Linux nodes · devices · electronics · 3D prototyping · edge integration |
+
+Technology remains supporting evidence. The primary signal is **the kind of operational contract the system can model and enforce**.
+
+---
+
+## Professional engagement model
+
+The standalone surface also explains the kinds of problems that best fit this engineering approach:
+
+- **Product & Systems Architecture** — domain boundaries, workflows and technical direction;
+- **Operational Software** — Django/APIs/data and role-aware interfaces around real work;
+- **Backend Integrity & Modernization** — authorization, reliability, tests, observability and CI/CD;
+- **Applied AI & Automation** — agents and operational automation with explicit boundaries and human oversight where appropriate.
+
+This layer follows the evidence. It does not replace it with a generic “hire me” section.
+
+---
+
 ## What this repository demonstrates
 
 | Surface | Engineering signal |
 |---|---|
 | **Product presentation** | Operational problems are explained before technology choices |
 | **Responsive React UI** | Public evidence remains usable across desktop and mobile |
+| **Accessible navigation** | Skip link, focus states, explicit language controls and reduced-motion behavior |
 | **Case-oriented portfolio** | Systems are presented through problem, architecture, evidence and maturity |
 | **Public/private separation** | Sensitive client implementation remains outside the public surface |
-| **Portfolio contract** | CI prevents key positioning, maturity, brand and evidence links from drifting silently |
+| **Portfolio contract** | CI prevents key positioning, maturity, brand, narrative sections and evidence links from drifting silently |
 | **Reproducible delivery** | Node 20, validation, linting and production build are enforced consistently |
 
 ---
@@ -104,6 +147,10 @@ The validator checks, among other things:
 
 - FDR remains the declared `L2+` flagship;
 - Forge/Fresh Market remain explicitly `L1` unless intentionally advanced;
+- the full narrative sections remain present: flagship, depth, portfolio, maturity, evidence, method and engagement;
+- all six engineering-depth domains remain represented;
+- all four professional-engagement categories remain represented;
+- the L0 → L4 scale remains explicit;
 - key case-study and demo links are present;
 - Crohnoz brand typography remains Sora + Inter;
 - the old `Full-Stack Developer` positioning does not return;
@@ -132,7 +179,7 @@ npm run dev
 | Destination | Purpose |
 |---|---|
 | **[Enrique Flores / Crohnoz profile](https://github.com/Crohnoz)** | Main professional portfolio surface |
-| **[Public Evidence Library](https://github.com/Crohnoz/Crohnoz/tree/main/evidence)** | Curated engineering case studies |
+| **[Public Evidence Library](https://github.com/Crohnoz/Crohnoz/tree/main/evidence)** | Responsive visual engineering case library |
 | **[Crohnoz Forge](https://github.com/Crohnoz/Crohnoz-Forge)** | Product reasoning and discovery R&D |
 | **[Crohnoz Fresh Market](https://github.com/Crohnoz/Crohnoz-FreshMarket)** | Fresh-retail operational modeling R&D |
 | **[IncluMe](https://github.com/Crohnoz/IncluMe)** | Accessibility and civic-product exploration |
