@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LINKS = {
   website: "https://crohnozlabs.cl",
@@ -251,42 +251,46 @@ const capabilities = [
   },
 ];
 
+const maturityScale = [
+  { code: "L0", es: "Idea", en: "Idea" },
+  { code: "L1", es: "Prototipo", en: "Prototype" },
+  { code: "L2", es: "Piloto", en: "Pilot" },
+  { code: "L3", es: "Producción", en: "Production" },
+  { code: "L4", es: "Escala", en: "Scale" },
+];
+
 const maturityRows = [
   {
     name: "FDR",
     domain: { es: "Operaciones de salud", en: "Healthcare operations" },
     level: "L2+",
     stage: "ADVANCED PILOT",
-    width: "72%",
-    dot: "bg-violet-400",
-    bar: "from-fuchsia-500 via-violet-500 to-cyan-400",
+    activeStage: 2,
+    fill: "bg-violet-400",
   },
   {
     name: "Crohnoz Forge",
     domain: { es: "Razonamiento de producto", en: "Product reasoning" },
     level: "L1",
     stage: "PROTOTYPE / R&D",
-    width: "25%",
-    dot: "bg-blue-400",
-    bar: "from-blue-500 to-cyan-400",
+    activeStage: 1,
+    fill: "bg-blue-400",
   },
   {
     name: "Fresh Market",
     domain: { es: "Operaciones de retail fresco", en: "Fresh-retail operations" },
     level: "L1",
     stage: "PROTOTYPE / R&D",
-    width: "25%",
-    dot: "bg-cyan-400",
-    bar: "from-cyan-500 to-blue-400",
+    activeStage: 1,
+    fill: "bg-cyan-400",
   },
   {
     name: "IncluMe",
     domain: { es: "Accesibilidad / civic product", en: "Accessibility / civic product" },
     level: "L1",
     stage: "EARLY PRODUCT",
-    width: "25%",
-    dot: "bg-fuchsia-400",
-    bar: "from-fuchsia-500 to-violet-400",
+    activeStage: 1,
+    fill: "bg-fuchsia-400",
   },
 ];
 
@@ -394,6 +398,25 @@ function SectionHeading({ eyebrow, title, text }) {
 export default function App() {
   const [lang, setLang] = useState("es");
   const t = copy[lang];
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title =
+      lang === "es"
+        ? "Crohnoz Systems | Enrique Flores · Arquitectura de Productos y Sistemas"
+        : "Crohnoz Systems | Enrique Flores · Product & Systems Architect";
+
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+      description.setAttribute(
+        "content",
+        lang === "es"
+          ? "Portfolio público de ingeniería de Enrique Flores / Crohnoz Labs: sistemas operacionales, arquitectura de producto, evidencia verificable y madurez honesta."
+          : "Public engineering portfolio of Enrique Flores / Crohnoz Labs: operational systems, product architecture, inspectable evidence and honest maturity.",
+      );
+    }
+  }, [lang]);
+
   const navItems = [
     ["#flagship", t.nav.flagship],
     ["#depth", t.nav.depth],
@@ -620,14 +643,6 @@ export default function App() {
             <SectionHeading eyebrow="PORTFOLIO MATURITY" title={t.maturityTitle} text={t.maturityText} />
 
             <div className="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-[#10111D]">
-              <div className="hidden grid-cols-5 border-b border-white/10 px-7 py-4 text-[0.68rem] font-black uppercase tracking-[0.16em] text-white/35 md:grid">
-                <span>L0 · Idea</span>
-                <span>L1 · Prototype</span>
-                <span>L2 · Pilot</span>
-                <span>L3 · Production</span>
-                <span>L4 · Scale</span>
-              </div>
-
               <div className="divide-y divide-white/10">
                 {maturityRows.map((item) => (
                   <article key={item.name} className="grid gap-5 p-6 md:grid-cols-[17rem_1fr] md:items-center md:p-7">
@@ -642,16 +657,36 @@ export default function App() {
                     </div>
 
                     <div>
-                      <div className="relative h-2.5 overflow-hidden rounded-full bg-white/[0.07]">
-                        <div
-                          className={`h-full rounded-full bg-gradient-to-r ${item.bar}`}
-                          style={{ width: item.width }}
-                        />
+                      <div
+                        className="grid grid-cols-5 gap-2"
+                        aria-label={`${item.name}: ${item.level} ${item.stage}`}
+                      >
+                        {maturityScale.map((stage, index) => {
+                          const reached = index <= item.activeStage;
+                          const current = index === item.activeStage;
+
+                          return (
+                            <div key={stage.code} className="min-w-0">
+                              <div
+                                className={`h-2.5 rounded-full ${reached ? item.fill : "bg-white/[0.07]"}`}
+                              />
+                              <p
+                                className={`mt-2 truncate text-[0.62rem] font-black uppercase tracking-[0.08em] ${
+                                  current ? "text-white/80" : "text-white/25"
+                                }`}
+                              >
+                                {stage.code}
+                              </p>
+                              <p className={`hidden text-[0.62rem] ${current ? "text-white/55" : "text-white/20"} lg:block`}>
+                                {stage[lang]}
+                              </p>
+                            </div>
+                          );
+                        })}
                       </div>
-                      <div className="mt-2 flex items-center gap-2 text-xs font-bold text-white/45">
-                        <span className={`h-2 w-2 rounded-full ${item.dot}`} />
-                        <span>{item.level} · {item.stage}</span>
-                      </div>
+                      <p className="mt-3 text-xs font-bold text-white/52">
+                        {item.level} · {item.stage}
+                      </p>
                     </div>
                   </article>
                 ))}
