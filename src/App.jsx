@@ -10,7 +10,7 @@ const LINKS = {
   forgeDemo: "https://crohnoz-forge.netlify.app",
   freshMarket: "https://github.com/Crohnoz/Crohnoz-FreshMarket",
   inclume: "https://github.com/Crohnoz/IncluMe",
-  rental: "https://github.com/Crohnoz/sistema_gestion_de_arriendos",
+  rental: "https://github.com/Crohnoz/Crohnoz-Rental-Ops",
   rentalCase:
     "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/rental-operations.md",
   email: "mailto:prog.eflores@gmail.com",
