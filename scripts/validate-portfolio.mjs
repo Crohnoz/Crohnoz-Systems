@@ -31,6 +31,42 @@ for (const value of [
   requireText(app, value, "App contract");
 }
 
+for (const section of [
+  'id="flagship"',
+  'id="depth"',
+  'id="portfolio"',
+  'id="maturity"',
+  'id="evidence"',
+  'id="method"',
+  'id="engagement"',
+]) {
+  requireText(app, section, "Narrative section contract");
+}
+
+for (const capability of [
+  "PRODUCT SYSTEMS",
+  "BACKEND & DATA",
+  "SECURITY & TRUST",
+  "OPERATIONS",
+  "AI & AUTOMATION",
+  "PHYSICAL SYSTEMS",
+]) {
+  requireText(app, capability, "Engineering depth contract");
+}
+
+for (const engagement of [
+  "PRODUCT & SYSTEMS ARCHITECTURE",
+  "OPERATIONAL SOFTWARE",
+  "BACKEND INTEGRITY & MODERNIZATION",
+  "APPLIED AI & AUTOMATION",
+]) {
+  requireText(app, engagement, "Professional engagement contract");
+}
+
+for (const level of ["L0 · Idea", "L1 · Prototype", "L2 · Pilot", "L3 · Production", "L4 · Scale"]) {
+  requireText(app, level, "Maturity scale contract");
+}
+
 requireText(css, 'font-family: "Inter"', "Typography contract");
 requireText(css, 'font-family: "Sora"', "Typography contract");
 requireText(html, "Product & Systems Architect", "Document metadata");
