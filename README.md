@@ -1,5 +1,7 @@
 # Crohnoz Systems
 
+[![Quality Gate](https://github.com/Crohnoz/Crohnoz-Systems/actions/workflows/quality.yml/badge.svg)](https://github.com/Crohnoz/Crohnoz-Systems/actions/workflows/quality.yml)
+
 **Public Portfolio Surface · Selected Systems & Engineering Work**
 
 Crohnoz Systems is the bilingual presentation layer for selected work by Enrique Flores / Crohnoz Labs. Its purpose is to show **what operational problem was addressed, how the system was shaped and what can be demonstrated publicly** without pretending that every underlying production repository is open source.
@@ -44,13 +46,25 @@ Private material may include client data, credentials, production topology, inte
 - React
 - Vite
 - JavaScript
-- CSS
+- Tailwind CSS
 - ESLint
+
+## Quality gate
+
+Every push and pull request to `main` runs:
+
+```bash
+npm ci
+npm run lint
+npm run build
+```
+
+The goal is simple: the public presentation surface should remain reproducible, lint-clean and buildable.
 
 ## Local development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
