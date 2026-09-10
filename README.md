@@ -1,55 +1,92 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Crohnoz/Crohnoz/main/brand/assets/logo-horizontal-dark.svg" alt="Crohnoz Labs" width="360" />
+
 # Crohnoz Systems
+
+### Public Portfolio Surface · Operational Systems & Engineering Work
+
+**A curated interface to the systems, engineering decisions and public evidence behind Crohnoz Labs.**
 
 [![Quality Gate](https://github.com/Crohnoz/Crohnoz-Systems/actions/workflows/quality.yml/badge.svg)](https://github.com/Crohnoz/Crohnoz-Systems/actions/workflows/quality.yml)
 
-**Public Portfolio Surface · Selected Systems & Engineering Work**
+<a href="https://github.com/Crohnoz"><img src="https://img.shields.io/badge/PROFILE-ENRIQUE_FLORES-8B5CF6?style=for-the-badge" height="34" alt="Enrique Flores profile" /></a>
+<a href="https://github.com/Crohnoz/Crohnoz/tree/main/evidence"><img src="https://img.shields.io/badge/EXPLORE-PUBLIC_EVIDENCE-3B82F6?style=for-the-badge" height="34" alt="Public evidence" /></a>
+<a href="https://crohnozlabs.cl"><img src="https://img.shields.io/badge/ENTER-CROHNOZ_LABS-EC4899?style=for-the-badge" height="34" alt="Crohnoz Labs" /></a>
 
-Crohnoz Systems is the bilingual presentation layer for selected work by Enrique Flores / Crohnoz Labs. Its purpose is to show **what operational problem was addressed, how the system was shaped and what can be demonstrated publicly** without pretending that every underlying production repository is open source.
+**Problem → System → Evidence → Scale**
 
-> Understand the operation first. Then design the system.
+</div>
 
-## What this repository demonstrates
-
-- bilingual ES / EN product presentation;
-- responsive React interface built with Vite;
-- selected system and project case summaries;
-- screenshots and public-facing evidence where appropriate;
-- service and delivery model focused on real operational workflows;
-- reusable portfolio structure for systems, dashboards, commerce and automation work;
-- explicit separation between public presentation and confidential implementation.
+---
 
 ## Portfolio role
 
-This repository is **not a product maturity claim**. It is a curated public surface that connects visitors with selected systems and supporting evidence.
+Crohnoz Systems is the public presentation layer for selected work by **Enrique Flores / Crohnoz Labs**. It is deliberately different from a source-code catalog: the goal is to explain **what operational problem exists, how the system is shaped, which engineering decisions matter and what can be inspected safely**.
 
-The broader Crohnoz portfolio uses an evidence-based maturity model:
+> **Evidence is public by design. Implementation is private by default.**
 
-`L0 IDEA → L1 PROTOTYPE → L2 PILOT → L3 PRODUCTION → L4 SCALE`
+The surface is bilingual, responsive and built to connect visitors with curated engineering cases without implying that every underlying production repository is open source.
 
-Individual products are labeled separately according to the evidence available for each one. The flagship engineering reference remains FDR; experimental products such as Forge and Fresh Market are intentionally presented at earlier maturity levels.
+---
+
+## Current portfolio hierarchy
+
+| System | Public role | Maturity / position | Primary evidence |
+|---|---|---|---|
+| **FDR** | Flagship healthcare operations system | `L2+ · Advanced Pilot` | Domain integrity · public/private boundaries · lifecycle · staging · regressions |
+| **Rental Operations** | Selected operational engineering case | Operational evidence | Financial rules · traceability · environment isolation · RLS |
+| **Crohnoz Forge** | Product reasoning R&D | `L1 · Prototype / R&D` | Discovery · assumptions · evidence · stage gates · local-first workflow |
+| **Crohnoz Fresh Market** | Retail operations R&D | `L1 · Prototype / R&D` | Perishable inventory · FEFO · continuity · backend controls |
+| **IncluMe** | Accessibility / civic product exploration | `L1 · Early Product` | Citizen + institutional workflows · geospatial UX · review loops |
+
+Maturity is intentionally explicit. A polished demo does not automatically equal a production system.
+
+---
+
+## What this repository demonstrates
+
+| Surface | Engineering signal |
+|---|---|
+| **Product presentation** | Operational problems are explained before technology choices |
+| **Responsive React UI** | Public evidence remains usable across desktop and mobile |
+| **Case-oriented portfolio** | Systems are presented through problem, architecture, evidence and maturity |
+| **Public/private separation** | Sensitive client implementation remains outside the public surface |
+| **Reproducible delivery** | CI validates linting and production builds |
+
+---
+
+## Engineering principle
+
+### **Understand the operation first. Then design the system.**
+
+A public engineering case should make it possible to answer four questions quickly:
+
+1. What real problem is being solved?
+2. Which operational rules shape the system?
+3. What engineering behavior can actually be inspected?
+4. What maturity can honestly be claimed today?
+
+Screenshots, feature counts and technology badges are supporting evidence—not substitutes for those answers.
+
+---
 
 ## Public / private boundary
 
-Public material may describe:
+**Safe to expose:** sanitized architecture, product behavior, public demos with fictitious data, engineering decisions, test strategy, privacy controls and stable non-sensitive evidence.
 
-- the operational problem;
-- the system boundary;
-- architecture and technology choices;
-- sanitized workflows;
-- screenshots or demonstrations;
-- measurable engineering evidence that can be disclosed safely.
+**Kept private:** credentials, customer data, private infrastructure, production topology, proprietary implementation, internal repositories and client-confidential logic.
 
-Private material may include client data, credentials, production topology, internal infrastructure, private repositories and implementation details that do not belong in a public portfolio.
+---
 
-## Stack
+## Technology
 
-- React
-- Vite
-- JavaScript
-- Tailwind CSS
-- ESLint
+`React` · `Vite` · `JavaScript` · `Tailwind CSS` · `ESLint`
 
-## Quality gate
+<details>
+<summary><strong>Quality gate and local development</strong></summary>
+
+<br/>
 
 Every push and pull request to `main` runs:
 
@@ -59,9 +96,7 @@ npm run lint
 npm run build
 ```
 
-The goal is simple: the public presentation surface should remain reproducible, lint-clean and buildable.
-
-## Local development
+Local development:
 
 ```bash
 npm ci
@@ -74,21 +109,30 @@ Production build:
 npm run build
 ```
 
-## Related public work
-
-- **Crohnoz profile / engineering evidence:** https://github.com/Crohnoz
-- **Crohnoz Forge:** https://github.com/Crohnoz/Crohnoz-Forge
-- **Crohnoz Fresh Market:** https://github.com/Crohnoz/Crohnoz-FreshMarket
-- **IncluMe:** https://github.com/Crohnoz/IncluMe
-- **Crohnoz Rental Ops:** https://github.com/Crohnoz/Crohnoz-Rental-Ops
-- **Crohnoz Labs:** https://crohnozlabs.cl
-
-## Engineering principle
-
-**Evidence, not claims.**
-
-A public case should make it possible to understand why a system exists and which engineering decisions can actually be demonstrated. Production status, scale and maturity are not inferred from screenshots or feature lists; they are stated only when the available evidence supports them.
+</details>
 
 ---
 
-**Problem → System → Evidence → Scale**
+## Explore the evidence
+
+| Destination | Purpose |
+|---|---|
+| **[Enrique Flores / Crohnoz profile](https://github.com/Crohnoz)** | Main professional portfolio surface |
+| **[Public Evidence Library](https://github.com/Crohnoz/Crohnoz/tree/main/evidence)** | Curated engineering case studies |
+| **[Crohnoz Forge](https://github.com/Crohnoz/Crohnoz-Forge)** | Product reasoning and discovery R&D |
+| **[Crohnoz Fresh Market](https://github.com/Crohnoz/Crohnoz-FreshMarket)** | Fresh-retail operational modeling R&D |
+| **[IncluMe](https://github.com/Crohnoz/IncluMe)** | Accessibility and civic-product exploration |
+| **[Crohnoz Rental Ops](https://github.com/Crohnoz/Crohnoz-Rental-Ops)** | Operational rules, finance and data isolation |
+| **[Crohnoz Labs](https://crohnozlabs.cl)** | Main product-engineering ecosystem |
+
+---
+
+<div align="center">
+
+### Crohnoz Labs
+
+**Tecnología que resuelve problemas reales.**
+
+`BUILD` · `INTEGRATE` · `AUTOMATE` · `OBSERVE` · `PROTECT` · `IMPROVE`
+
+</div>
