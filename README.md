@@ -52,7 +52,8 @@ Maturity is intentionally explicit. A polished demo does not automatically equal
 | **Responsive React UI** | Public evidence remains usable across desktop and mobile |
 | **Case-oriented portfolio** | Systems are presented through problem, architecture, evidence and maturity |
 | **Public/private separation** | Sensitive client implementation remains outside the public surface |
-| **Reproducible delivery** | CI validates linting and production builds |
+| **Portfolio contract** | CI prevents key positioning, maturity, brand and evidence links from drifting silently |
+| **Reproducible delivery** | Node 20, validation, linting and production build are enforced consistently |
 
 ---
 
@@ -81,32 +82,45 @@ Screenshots, feature counts and technology badges are supporting evidence—not 
 
 ## Technology
 
-`React` · `Vite` · `JavaScript` · `Tailwind CSS` · `ESLint`
+`React` · `Vite` · `JavaScript` · `Tailwind CSS` · `ESLint` · `Node 20`
 
 <details>
 <summary><strong>Quality gate and local development</strong></summary>
 
 <br/>
 
+The repository pins Node through `.nvmrc` and validates the public portfolio contract before lint/build.
+
 Every push and pull request to `main` runs:
 
 ```bash
 npm ci
+npm run validate:portfolio
 npm run lint
 npm run build
+```
+
+The validator checks, among other things:
+
+- FDR remains the declared `L2+` flagship;
+- Forge/Fresh Market remain explicitly `L1` unless intentionally advanced;
+- key case-study and demo links are present;
+- Crohnoz brand typography remains Sora + Inter;
+- the old `Full-Stack Developer` positioning does not return;
+- required public assets are present.
+
+Run the full local gate with:
+
+```bash
+npm run check
 ```
 
 Local development:
 
 ```bash
+nvm use
 npm ci
 npm run dev
-```
-
-Production build:
-
-```bash
-npm run build
 ```
 
 </details>
