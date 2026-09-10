@@ -63,10 +63,16 @@ for (const engagement of [
   requireText(app, engagement, "Professional engagement contract");
 }
 
-for (const level of ["L0 · Idea", "L1 · Prototype", "L2 · Pilot", "L3 · Production", "L4 · Scale"]) {
-  requireText(app, level, "Maturity scale contract");
+for (const code of ["L0", "L1", "L2", "L3", "L4"]) {
+  requireText(app, `code: "${code}"`, "Maturity scale contract");
 }
 
+for (const stage of ["Idea", "Prototype", "Pilot", "Production", "Scale"]) {
+  requireText(app, `en: "${stage}"`, "Maturity label contract");
+}
+
+requireText(app, "document.documentElement.lang = lang", "Language accessibility contract");
+requireText(app, "document.title =", "Localized document contract");
 requireText(css, 'font-family: "Inter"', "Typography contract");
 requireText(css, 'font-family: "Sora"', "Typography contract");
 requireText(html, "Product & Systems Architect", "Document metadata");
@@ -76,6 +82,8 @@ requireText(html, 'name="twitter:card"', "Social metadata");
 
 forbidText(html, "Full-Stack Developer", "Positioning contract");
 forbidText(app, ">CZ<", "Brand mark contract");
+forbidText(app, 'width: "72%"', "Maturity precision contract");
+forbidText(app, 'width: "25%"', "Maturity precision contract");
 
 if (nodeVersion !== "20") {
   failures.push(`Runtime contract: expected .nvmrc to contain 20, got ${JSON.stringify(nodeVersion)}`);
