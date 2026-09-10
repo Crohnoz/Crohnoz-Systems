@@ -1,25 +1,43 @@
 # Crohnoz Systems
 
-**Public portfolio and systems showcase for Enrique Flores / Crohnoz Labs.**
+**Public Portfolio Surface · Selected Systems & Engineering Work**
 
-Crohnoz Systems is a bilingual React application used to present selected software work, operational systems and the way I approach real business problems. It is intentionally a presentation layer rather than a claim that every referenced system is open source.
+Crohnoz Systems is the bilingual presentation layer for selected work by Enrique Flores / Crohnoz Labs. Its purpose is to show **what operational problem was addressed, how the system was shaped and what can be demonstrated publicly** without pretending that every underlying production repository is open source.
+
+> Understand the operation first. Then design the system.
 
 ## What this repository demonstrates
 
 - bilingual ES / EN product presentation;
 - responsive React interface built with Vite;
-- selected project case summaries and screenshots;
+- selected system and project case summaries;
+- screenshots and public-facing evidence where appropriate;
 - service and delivery model focused on real operational workflows;
-- direct contact paths for project discovery;
-- reusable portfolio structure for systems, dashboards, e-commerce and automation work.
+- reusable portfolio structure for systems, dashboards, commerce and automation work;
+- explicit separation between public presentation and confidential implementation.
 
-## Positioning
+## Portfolio role
 
-The portfolio is organized around a simple principle:
+This repository is **not a product maturity claim**. It is a curated public surface that connects visitors with selected systems and supporting evidence.
 
-> Understand the operation first. Then design the system.
+The broader Crohnoz portfolio uses an evidence-based maturity model:
 
-The projects presented here span internal administration, commerce, booking, workflow automation and operational dashboards. Public material is intended to explain the problem, solution and observable outcome without exposing private client data, credentials or sensitive production details.
+`L0 IDEA → L1 PROTOTYPE → L2 PILOT → L3 PRODUCTION → L4 SCALE`
+
+Individual products are labeled separately according to the evidence available for each one. The flagship engineering reference remains FDR; experimental products such as Forge and Fresh Market are intentionally presented at earlier maturity levels.
+
+## Public / private boundary
+
+Public material may describe:
+
+- the operational problem;
+- the system boundary;
+- architecture and technology choices;
+- sanitized workflows;
+- screenshots or demonstrations;
+- measurable engineering evidence that can be disclosed safely.
+
+Private material may include client data, credentials, production topology, internal infrastructure, private repositories and implementation details that do not belong in a public portfolio.
 
 ## Stack
 
@@ -48,8 +66,15 @@ npm run build
 - **Crohnoz Forge:** https://github.com/Crohnoz/Crohnoz-Forge
 - **Crohnoz Fresh Market:** https://github.com/Crohnoz/Crohnoz-FreshMarket
 - **IncluMe:** https://github.com/Crohnoz/IncluMe
+- **Operational administration case:** https://github.com/Crohnoz/sistema_gestion_de_arriendos
 - **Crohnoz Labs:** https://crohnozlabs.cl
 
-## Repository role
+## Engineering principle
 
-This repository is part of the public Crohnoz presentation surface. Production systems, client repositories and infrastructure may remain private; public evidence is deliberately separated from confidential implementation details.
+**Evidence, not claims.**
+
+A public case should make it possible to understand why a system exists and which engineering decisions can actually be demonstrated. Production status, scale and maturity are not inferred from screenshots or feature lists; they are stated only when the available evidence supports them.
+
+---
+
+**Problem → System → Evidence → Scale**
