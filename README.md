@@ -80,7 +80,7 @@ npm run build
 - **Crohnoz Forge:** https://github.com/Crohnoz/Crohnoz-Forge
 - **Crohnoz Fresh Market:** https://github.com/Crohnoz/Crohnoz-FreshMarket
 - **IncluMe:** https://github.com/Crohnoz/IncluMe
-- **Operational administration case:** https://github.com/Crohnoz/sistema_gestion_de_arriendos
+- **Crohnoz Rental Ops:** https://github.com/Crohnoz/Crohnoz-Rental-Ops
 - **Crohnoz Labs:** https://crohnozlabs.cl
 
 ## Engineering principle
