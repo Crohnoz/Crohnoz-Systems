@@ -1,18 +1,22 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 const LINKS = {
   website: "https://crohnozlabs.cl",
+  profile: "https://crohnozlabs.cl/profile",
   github: "https://github.com/Crohnoz",
   evidence: "https://github.com/Crohnoz/Crohnoz/tree/main/evidence",
   fdrCase: "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/fdr.md",
   fdrDemo: "https://crohnozlabs.cl/demos/fdr-centro-podologico",
   forge: "https://github.com/Crohnoz/Crohnoz-Forge",
+  forgeCase: "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/forge.md",
   forgeDemo: "https://crohnoz-forge.netlify.app",
   freshMarket: "https://github.com/Crohnoz/Crohnoz-FreshMarket",
+  freshMarketCase: "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/fresh-market.md",
   inclume: "https://github.com/Crohnoz/IncluMe",
+  inclumeCase: "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/inclume.md",
+  inclumeDemo: "https://inclume-chile.netlify.app/",
   rental: "https://github.com/Crohnoz/Crohnoz-Rental-Ops",
-  rentalCase:
-    "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/rental-operations.md",
+  rentalCase: "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/rental-operations.md",
   email: "mailto:prog.eflores@gmail.com",
   linkedin: "https://www.linkedin.com/in/prog-eflores/",
 };
@@ -25,6 +29,7 @@ const copy = {
       evidence: "Evidencia",
       method: "Método",
     },
+    skip: "Saltar al contenido",
     heroEyebrow: "CROHNOZ SYSTEMS · PUBLIC ENGINEERING SURFACE",
     heroTitle: "Sistemas construidos alrededor de operaciones reales.",
     heroText:
@@ -34,13 +39,13 @@ const copy = {
     principle: "Evidence, not claims",
     openEvidence: "Explorar evidencia pública",
     openLabs: "Crohnoz Labs",
+    openProfile: "Perfil profesional",
     flagshipEyebrow: "FLAGSHIP SYSTEM",
     flagshipTitle: "FDR · Healthcare Operations",
     flagshipText:
       "El sistema más maduro del portfolio. La evidencia pública se concentra en modelado de dominio, integridad backend, lifecycle operacional, privacidad, regresiones y entrega controlada.",
     openCase: "Engineering case study",
     openDemo: "Safe live demo",
-    maturity: "Madurez",
     productPortfolio: "Product portfolio",
     productPortfolioText:
       "Los productos experimentales se muestran con su nivel real de madurez. No se presentan como equivalentes al flagship.",
@@ -55,9 +60,11 @@ const copy = {
       "La evidencia pública puede mostrar problemas, arquitectura sanitizada, demos y decisiones de ingeniería. Credenciales, datos reales, topología privada y lógica confidencial permanecen fuera del escaparate.",
     contactTitle: "Construir algo útil empieza entendiendo la operación.",
     contactText:
-      "Para proyectos, colaboración técnica o revisión de sistemas, puedes entrar por Crohnoz Labs, GitHub o LinkedIn.",
+      "Para proyectos, colaboración técnica o revisión de sistemas, puedes entrar por Crohnoz Labs, el perfil profesional, GitHub o LinkedIn.",
     evidenceLink: "Ver evidencia",
     repoLink: "Abrir repositorio",
+    liveDemo: "Demo pública",
+    languageLabel: "Idioma",
   },
   en: {
     nav: {
@@ -66,6 +73,7 @@ const copy = {
       evidence: "Evidence",
       method: "Method",
     },
+    skip: "Skip to content",
     heroEyebrow: "CROHNOZ SYSTEMS · PUBLIC ENGINEERING SURFACE",
     heroTitle: "Systems built around real operations.",
     heroText:
@@ -75,13 +83,13 @@ const copy = {
     principle: "Evidence, not claims",
     openEvidence: "Explore public evidence",
     openLabs: "Crohnoz Labs",
+    openProfile: "Professional profile",
     flagshipEyebrow: "FLAGSHIP SYSTEM",
     flagshipTitle: "FDR · Healthcare Operations",
     flagshipText:
       "The most mature system in the portfolio. Public evidence focuses on domain modeling, backend integrity, operational lifecycle, privacy, regression thinking and controlled delivery.",
     openCase: "Engineering case study",
     openDemo: "Safe live demo",
-    maturity: "Maturity",
     productPortfolio: "Product portfolio",
     productPortfolioText:
       "Experimental products are shown at their actual maturity level. They are not presented as equivalent to the flagship.",
@@ -96,9 +104,11 @@ const copy = {
       "Public evidence may show problems, sanitized architecture, demos and engineering decisions. Credentials, real data, private topology and confidential logic stay outside the storefront.",
     contactTitle: "Useful systems start by understanding the operation.",
     contactText:
-      "For projects, technical collaboration or systems review, reach out through Crohnoz Labs, GitHub or LinkedIn.",
+      "For projects, technical collaboration or systems review, reach out through Crohnoz Labs, the professional profile, GitHub or LinkedIn.",
     evidenceLink: "View evidence",
     repoLink: "Open repository",
+    liveDemo: "Public demo",
+    languageLabel: "Language",
   },
 };
 
@@ -112,8 +122,8 @@ const products = [
     },
     proof: "Local-first · stage gates · privacy · CI",
     href: LINKS.forge,
-    secondaryHref: LINKS.forgeDemo,
-    secondaryLabel: "Live demo",
+    evidenceHref: LINKS.forgeCase,
+    demoHref: LINKS.forgeDemo,
   },
   {
     name: "Crohnoz Fresh Market",
@@ -122,8 +132,9 @@ const products = [
       es: "Exploración de operaciones para retail de productos frescos: inventario, lotes, recepción, preparación y merma.",
       en: "Fresh-food retail operations exploration: inventory, lots, receiving, preparation and waste.",
     },
-    proof: "Django · DRF · operations modeling",
+    proof: "Django · DRF · FEFO · operations modeling",
     href: LINKS.freshMarket,
+    evidenceHref: LINKS.freshMarketCase,
   },
   {
     name: "IncluMe",
@@ -132,8 +143,10 @@ const products = [
       es: "Producto de accesibilidad para información de estacionamientos, contribución ciudadana y revisión territorial.",
       en: "Accessibility product for parking information, citizen contribution and territorial review.",
     },
-    proof: "Civic UX · public/admin boundary",
+    proof: "Civic UX · contribution/review loop · public/admin boundary",
     href: LINKS.inclume,
+    evidenceHref: LINKS.inclumeCase,
+    demoHref: LINKS.inclumeDemo,
   },
 ];
 
@@ -147,7 +160,26 @@ const method = [
   ["07", "IMPROVE", "Evidence-driven"],
 ];
 
-function ExternalLink({ href, children, variant = "primary" }) {
+function SignalMark() {
+  const heights = [14, 24, 34, 44, 34, 24, 14];
+
+  return (
+    <span
+      aria-hidden="true"
+      className="flex h-11 w-11 shrink-0 items-center justify-center gap-[2px] rounded-xl border border-fuchsia-400/30 bg-gradient-to-br from-fuchsia-500/20 via-violet-500/15 to-cyan-400/15 shadow-lg shadow-fuchsia-950/30"
+    >
+      {heights.map((height, index) => (
+        <span
+          key={`${height}-${index}`}
+          className="w-[2px] rounded-full bg-gradient-to-b from-fuchsia-300 via-violet-300 to-cyan-300"
+          style={{ height }}
+        />
+      ))}
+    </span>
+  );
+}
+
+function ExternalLink({ href, children, variant = "primary", ariaLabel }) {
   const classes = {
     primary:
       "border-fuchsia-400/30 bg-fuchsia-500/15 text-fuchsia-100 hover:border-fuchsia-300/60 hover:bg-fuchsia-500/25",
@@ -162,9 +194,10 @@ function ExternalLink({ href, children, variant = "primary" }) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className={`inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-bold transition ${classes[variant]}`}
+      aria-label={ariaLabel}
+      className={`inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0B14] ${classes[variant]}`}
     >
-      {children} ↗
+      {children} <span aria-hidden="true">↗</span>
     </a>
   );
 }
@@ -185,16 +218,31 @@ function SectionHeading({ eyebrow, title, text }) {
 
 export default function App() {
   const [lang, setLang] = useState("es");
-  const t = useMemo(() => copy[lang], [lang]);
+  const t = copy[lang];
+  const navItems = [
+    ["#flagship", t.nav.flagship],
+    ["#portfolio", t.nav.portfolio],
+    ["#evidence", t.nav.evidence],
+    ["#method", t.nav.method],
+  ];
 
   return (
     <main className="min-h-screen bg-[#0A0B14] text-white selection:bg-fuchsia-500 selection:text-white">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0A0B14]/90 backdrop-blur-xl">
+      <a
+        href="#content"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-white px-4 py-3 text-sm font-black text-[#0A0B14] transition focus:translate-y-0"
+      >
+        {t.skip}
+      </a>
+
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0A0B14]/92 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
-          <a href="#top" className="flex min-w-0 items-center gap-3">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-fuchsia-400/30 bg-gradient-to-br from-fuchsia-500/30 via-violet-500/20 to-cyan-400/20 font-black text-white shadow-lg shadow-fuchsia-950/30">
-              CZ
-            </div>
+          <a
+            href="#top"
+            aria-label="Crohnoz Systems"
+            className="flex min-w-0 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80"
+          >
+            <SignalMark />
             <div className="min-w-0">
               <p className="truncate text-sm font-black tracking-[0.12em] text-white md:text-base">
                 CROHNOZ SYSTEMS
@@ -203,27 +251,31 @@ export default function App() {
             </div>
           </a>
 
-          <nav className="hidden items-center gap-6 text-sm font-semibold text-white/55 lg:flex">
-            <a className="transition hover:text-white" href="#flagship">
-              {t.nav.flagship}
-            </a>
-            <a className="transition hover:text-white" href="#portfolio">
-              {t.nav.portfolio}
-            </a>
-            <a className="transition hover:text-white" href="#evidence">
-              {t.nav.evidence}
-            </a>
-            <a className="transition hover:text-white" href="#method">
-              {t.nav.method}
-            </a>
+          <nav className="hidden items-center gap-6 text-sm font-semibold text-white/55 lg:flex" aria-label="Primary">
+            {navItems.map(([href, label]) => (
+              <a
+                key={href}
+                className="rounded-md transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80"
+                href={href}
+              >
+                {label}
+              </a>
+            ))}
           </nav>
 
-          <div className="flex shrink-0 items-center rounded-full border border-white/10 bg-white/[0.04] p-1">
+          <div
+            className="flex shrink-0 items-center rounded-full border border-white/10 bg-white/[0.04] p-1"
+            role="group"
+            aria-label={t.languageLabel}
+          >
             {["es", "en"].map((item) => (
               <button
                 key={item}
+                type="button"
+                aria-pressed={lang === item}
+                aria-label={item === "es" ? "Español" : "English"}
                 onClick={() => setLang(item)}
-                className={`rounded-full px-3 py-1.5 text-xs font-black uppercase transition ${
+                className={`rounded-full px-3 py-1.5 text-xs font-black uppercase transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 ${
                   lang === item ? "bg-white text-[#0A0B14]" : "text-white/50 hover:text-white"
                 }`}
               >
@@ -232,201 +284,226 @@ export default function App() {
             ))}
           </div>
         </div>
+
+        <nav
+          className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-5 pb-3 lg:hidden"
+          aria-label="Mobile"
+        >
+          {navItems.map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              className="shrink-0 rounded-full border border-white/10 bg-white/[0.035] px-3 py-2 text-xs font-bold text-white/60 transition hover:border-white/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
       </header>
 
-      <section id="top" className="relative overflow-hidden border-b border-white/10">
-        <div className="pointer-events-none absolute left-[-12rem] top-[-12rem] h-[30rem] w-[30rem] rounded-full bg-fuchsia-600/20 blur-3xl" />
-        <div className="pointer-events-none absolute right-[-10rem] top-[8rem] h-[28rem] w-[28rem] rounded-full bg-cyan-500/15 blur-3xl" />
+      <div id="content">
+        <section id="top" className="relative scroll-mt-28 overflow-hidden border-b border-white/10">
+          <div className="pointer-events-none absolute left-[-12rem] top-[-12rem] h-[30rem] w-[30rem] rounded-full bg-fuchsia-600/20 blur-3xl" />
+          <div className="pointer-events-none absolute right-[-10rem] top-[8rem] h-[28rem] w-[28rem] rounded-full bg-cyan-500/15 blur-3xl" />
 
-        <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-fuchsia-300">
-            {t.heroEyebrow}
-          </p>
+          <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-fuchsia-300">
+              {t.heroEyebrow}
+            </p>
 
-          <h1 className="mt-6 max-w-5xl text-5xl font-black leading-[0.95] tracking-[-0.055em] text-white md:text-7xl lg:text-8xl">
-            {t.heroTitle}
-          </h1>
+            <h1 className="mt-6 max-w-5xl text-5xl font-black leading-[0.95] tracking-[-0.055em] text-white md:text-7xl lg:text-8xl">
+              {t.heroTitle}
+            </h1>
 
-          <p className="mt-7 max-w-3xl text-lg leading-8 text-white/62 md:text-xl">
-            {t.heroText}
-          </p>
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-white/62 md:text-xl">
+              {t.heroText}
+            </p>
 
-          <div className="mt-8 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-white/70">
-            {[t.founder, t.location, t.principle].map((item) => (
-              <span key={item} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
-                {item}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            <ExternalLink href={LINKS.evidence}>{t.openEvidence}</ExternalLink>
-            <ExternalLink href={LINKS.website} variant="cyan">
-              {t.openLabs}
-            </ExternalLink>
-          </div>
-        </div>
-      </section>
-
-      <section id="flagship" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-        <div className="overflow-hidden rounded-[2rem] border border-violet-400/20 bg-gradient-to-br from-violet-500/10 via-white/[0.03] to-cyan-500/10 shadow-2xl shadow-violet-950/20">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="p-7 md:p-10 lg:p-12">
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-violet-300">
-                {t.flagshipEyebrow}
-              </p>
-              <div className="mt-5 inline-flex rounded-full border border-violet-400/30 bg-violet-500/15 px-4 py-2 text-xs font-black text-violet-100">
-                L2+ · ADVANCED PILOT / PRODUCTION-ORIENTED
-              </div>
-              <h2 className="mt-6 text-4xl font-black tracking-[-0.045em] text-white md:text-6xl">
-                {t.flagshipTitle}
-              </h2>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-white/62 md:text-lg">
-                {t.flagshipText}
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ExternalLink href={LINKS.fdrCase}>{t.openCase}</ExternalLink>
-                <ExternalLink href={LINKS.fdrDemo} variant="cyan">
-                  {t.openDemo}
-                </ExternalLink>
-              </div>
+            <div className="mt-8 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-white/70">
+              {[t.founder, t.location, t.principle].map((item) => (
+                <span key={item} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
+                  {item}
+                </span>
+              ))}
             </div>
 
-            <div className="min-h-[22rem] border-t border-white/10 bg-[#070811] p-4 lg:border-l lg:border-t-0 md:p-6">
-              <div className="h-full overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/[0.03]">
-                <img
-                  src="/portfolio/fdr-podologia/Screenshot_20260510_010603.png"
-                  alt="FDR public portfolio preview"
-                  className="h-full min-h-[22rem] w-full object-cover object-top opacity-90"
-                />
+            <div className="mt-10 flex flex-wrap gap-3">
+              <ExternalLink href={LINKS.evidence}>{t.openEvidence}</ExternalLink>
+              <ExternalLink href={LINKS.profile} variant="neutral">
+                {t.openProfile}
+              </ExternalLink>
+              <ExternalLink href={LINKS.website} variant="cyan">
+                {t.openLabs}
+              </ExternalLink>
+            </div>
+          </div>
+        </section>
+
+        <section id="flagship" className="mx-auto scroll-mt-32 max-w-7xl px-5 py-20 lg:px-8">
+          <div className="overflow-hidden rounded-[2rem] border border-violet-400/20 bg-gradient-to-br from-violet-500/10 via-white/[0.03] to-cyan-500/10 shadow-2xl shadow-violet-950/20">
+            <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="p-7 md:p-10 lg:p-12">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-violet-300">
+                  {t.flagshipEyebrow}
+                </p>
+                <div className="mt-5 inline-flex rounded-full border border-violet-400/30 bg-violet-500/15 px-4 py-2 text-xs font-black text-violet-100">
+                  L2+ · ADVANCED PILOT / PRODUCTION-ORIENTED
+                </div>
+                <h2 className="mt-6 text-4xl font-black tracking-[-0.045em] text-white md:text-6xl">
+                  {t.flagshipTitle}
+                </h2>
+                <p className="mt-6 max-w-2xl text-base leading-8 text-white/62 md:text-lg">
+                  {t.flagshipText}
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <ExternalLink href={LINKS.fdrCase}>{t.openCase}</ExternalLink>
+                  <ExternalLink href={LINKS.fdrDemo} variant="cyan">
+                    {t.openDemo}
+                  </ExternalLink>
+                </div>
+              </div>
+
+              <div className="min-h-[22rem] border-t border-white/10 bg-[#070811] p-4 md:p-6 lg:border-l lg:border-t-0">
+                <div className="h-full overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/[0.03]">
+                  <img
+                    src="/portfolio/fdr-podologia/Screenshot_20260510_010603.png"
+                    alt="FDR public portfolio preview"
+                    loading="lazy"
+                    className="h-full min-h-[22rem] w-full object-cover object-top opacity-90"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="portfolio" className="border-y border-white/10 bg-white/[0.015]">
-        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+        <section id="portfolio" className="scroll-mt-32 border-y border-white/10 bg-white/[0.015]">
+          <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <SectionHeading
+              eyebrow="PRODUCT LAB"
+              title={t.productPortfolio}
+              text={t.productPortfolioText}
+            />
+
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {products.map((product) => (
+                <article
+                  key={product.name}
+                  className="flex min-h-[24rem] flex-col rounded-[1.75rem] border border-white/10 bg-[#10111D] p-6 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-white/20"
+                >
+                  <div className="inline-flex w-fit rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-2 text-xs font-black text-cyan-100">
+                    {product.maturity}
+                  </div>
+                  <h3 className="mt-6 text-2xl font-black tracking-[-0.03em] text-white">
+                    {product.name}
+                  </h3>
+                  <p className="mt-4 flex-1 text-sm leading-7 text-white/58">
+                    {product.description[lang]}
+                  </p>
+                  <p className="mt-6 border-t border-white/10 pt-5 text-xs font-bold uppercase tracking-[0.14em] text-white/38">
+                    {product.proof}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <ExternalLink href={product.evidenceHref}>{t.evidenceLink}</ExternalLink>
+                    {product.demoHref && (
+                      <ExternalLink href={product.demoHref} variant="cyan">
+                        {t.liveDemo}
+                      </ExternalLink>
+                    )}
+                    <ExternalLink href={product.href} variant="neutral">
+                      {t.repoLink}
+                    </ExternalLink>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="evidence" className="mx-auto scroll-mt-32 max-w-7xl px-5 py-20 lg:px-8">
           <SectionHeading
-            eyebrow="PRODUCT LAB"
-            title={t.productPortfolio}
-            text={t.productPortfolioText}
+            eyebrow="ENGINEERING EVIDENCE"
+            title={t.operationalEvidence}
+            text={t.operationalEvidenceText}
           />
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {products.map((product) => (
-              <article
-                key={product.name}
-                className="flex min-h-[24rem] flex-col rounded-[1.75rem] border border-white/10 bg-[#10111D] p-6 shadow-xl shadow-black/20"
-              >
-                <div className="inline-flex w-fit rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-2 text-xs font-black text-cyan-100">
-                  {product.maturity}
-                </div>
-                <h3 className="mt-6 text-2xl font-black tracking-[-0.03em] text-white">
-                  {product.name}
-                </h3>
-                <p className="mt-4 flex-1 text-sm leading-7 text-white/58">
-                  {product.description[lang]}
-                </p>
-                <p className="mt-6 border-t border-white/10 pt-5 text-xs font-bold uppercase tracking-[0.14em] text-white/38">
-                  {product.proof}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  <ExternalLink href={product.href} variant="neutral">
-                    {t.repoLink}
-                  </ExternalLink>
-                  {product.secondaryHref && (
-                    <ExternalLink href={product.secondaryHref} variant="cyan">
-                      {product.secondaryLabel}
-                    </ExternalLink>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="evidence" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-        <SectionHeading
-          eyebrow="ENGINEERING EVIDENCE"
-          title={t.operationalEvidence}
-          text={t.operationalEvidenceText}
-        />
-
-        <div className="mt-12 grid gap-6 rounded-[2rem] border border-white/10 bg-gradient-to-br from-fuchsia-500/[0.08] to-cyan-500/[0.05] p-6 md:grid-cols-[1fr_auto] md:items-center md:p-9">
-          <div>
-            <div className="inline-flex rounded-full border border-fuchsia-400/20 bg-fuchsia-500/10 px-3 py-2 text-xs font-black text-fuchsia-100">
-              SELECTED OPERATIONAL SYSTEM
-            </div>
-            <h3 className="mt-5 text-3xl font-black tracking-[-0.04em] text-white">
-              Rental Operations
-            </h3>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-white/58 md:text-base">
-              {lang === "es"
-                ? "Cobros, pagos, vouchers, liquidaciones, reglas de redondeo y separación estricta entre demo pública y operación privada con Auth + RLS."
-                : "Charges, payments, vouchers, settlements, rounding rules and strict separation between the public demo and private operation with Auth + RLS."}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3 md:flex-col">
-            <ExternalLink href={LINKS.rentalCase}>{t.evidenceLink}</ExternalLink>
-            <ExternalLink href={LINKS.rental} variant="neutral">
-              {t.repoLink}
-            </ExternalLink>
-          </div>
-        </div>
-      </section>
-
-      <section id="method" className="border-y border-white/10 bg-white/[0.015]">
-        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-          <SectionHeading eyebrow="OPERATING MODEL" title={t.methodTitle} text={t.methodText} />
-
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
-            {method.map(([step, title, detail]) => (
-              <div key={step} className="rounded-2xl border border-white/10 bg-[#10111D] p-5">
-                <p className="text-xs font-black text-fuchsia-300">{step}</p>
-                <p className="mt-5 text-sm font-black tracking-[0.08em] text-white">{title}</p>
-                <p className="mt-2 text-xs leading-5 text-white/38">{detail}</p>
+          <div className="mt-12 grid gap-6 rounded-[2rem] border border-white/10 bg-gradient-to-br from-fuchsia-500/[0.08] to-cyan-500/[0.05] p-6 md:grid-cols-[1fr_auto] md:items-center md:p-9">
+            <div>
+              <div className="inline-flex rounded-full border border-fuchsia-400/20 bg-fuchsia-500/10 px-3 py-2 text-xs font-black text-fuchsia-100">
+                SELECTED OPERATIONAL SYSTEM
               </div>
-            ))}
+              <h3 className="mt-5 text-3xl font-black tracking-[-0.04em] text-white">
+                Rental Operations
+              </h3>
+              <p className="mt-4 max-w-3xl text-sm leading-7 text-white/58 md:text-base">
+                {lang === "es"
+                  ? "Cobros, pagos, vouchers, liquidaciones, reglas de redondeo y separación estricta entre demo pública y operación privada con Auth + RLS."
+                  : "Charges, payments, vouchers, settlements, rounding rules and strict separation between the public demo and private operation with Auth + RLS."}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 md:flex-col">
+              <ExternalLink href={LINKS.rentalCase}>{t.evidenceLink}</ExternalLink>
+              <ExternalLink href={LINKS.rental} variant="neutral">
+                {t.repoLink}
+              </ExternalLink>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-        <div className="grid gap-8 rounded-[2rem] border border-cyan-400/15 bg-cyan-500/[0.05] p-7 md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <h2 className="text-3xl font-black tracking-[-0.04em] text-white md:text-5xl">
-            {t.boundaryTitle}
-          </h2>
-          <p className="text-base leading-8 text-white/58">{t.boundaryText}</p>
-        </div>
-      </section>
+        <section id="method" className="scroll-mt-32 border-y border-white/10 bg-white/[0.015]">
+          <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <SectionHeading eyebrow="OPERATING MODEL" title={t.methodTitle} text={t.methodText} />
 
-      <section className="border-t border-white/10 bg-[#070811]">
-        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-fuchsia-300">CONTACT</p>
-          <h2 className="mt-5 max-w-4xl text-4xl font-black tracking-[-0.045em] text-white md:text-6xl">
-            {t.contactTitle}
-          </h2>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-white/55 md:text-lg">
-            {t.contactText}
-          </p>
-
-          <div className="mt-9 flex flex-wrap gap-3">
-            <ExternalLink href={LINKS.website}>{t.openLabs}</ExternalLink>
-            <ExternalLink href={LINKS.github} variant="neutral">
-              GitHub
-            </ExternalLink>
-            <ExternalLink href={LINKS.linkedin} variant="neutral">
-              LinkedIn
-            </ExternalLink>
-            <ExternalLink href={LINKS.email} variant="cyan">
-              Email
-            </ExternalLink>
+            <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
+              {method.map(([step, title, detail]) => (
+                <div key={step} className="rounded-2xl border border-white/10 bg-[#10111D] p-5">
+                  <p className="text-xs font-black text-fuchsia-300">{step}</p>
+                  <p className="mt-5 text-sm font-black tracking-[0.08em] text-white">{title}</p>
+                  <p className="mt-2 text-xs leading-5 text-white/38">{detail}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+          <div className="grid gap-8 rounded-[2rem] border border-cyan-400/15 bg-cyan-500/[0.05] p-7 md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <h2 className="text-3xl font-black tracking-[-0.04em] text-white md:text-5xl">
+              {t.boundaryTitle}
+            </h2>
+            <p className="text-base leading-8 text-white/58">{t.boundaryText}</p>
+          </div>
+        </section>
+
+        <section className="border-t border-white/10 bg-[#070811]">
+          <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-fuchsia-300">CONTACT</p>
+            <h2 className="mt-5 max-w-4xl text-4xl font-black tracking-[-0.045em] text-white md:text-6xl">
+              {t.contactTitle}
+            </h2>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-white/55 md:text-lg">
+              {t.contactText}
+            </p>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              <ExternalLink href={LINKS.profile}>{t.openProfile}</ExternalLink>
+              <ExternalLink href={LINKS.website} variant="cyan">
+                {t.openLabs}
+              </ExternalLink>
+              <ExternalLink href={LINKS.github} variant="neutral">
+                GitHub
+              </ExternalLink>
+              <ExternalLink href={LINKS.linkedin} variant="neutral">
+                LinkedIn
+              </ExternalLink>
+              <ExternalLink href={LINKS.email} variant="neutral">
+                Email
+              </ExternalLink>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <footer className="border-t border-white/10 bg-[#070811] px-5 py-8 text-center text-xs font-semibold uppercase tracking-[0.16em] text-white/30">
         © 2026 Crohnoz Labs · Enrique Flores · Product & Systems Architect
