@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   quality:
-    name: Lint and build
+    name: Portfolio contract, lint and build
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -31,6 +31,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Validate public portfolio contract
+        run: npm run validate:portfolio
 
       - name: Lint
         run: npm run lint
