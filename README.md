@@ -34,7 +34,7 @@ The surface is bilingual, responsive and built to connect visitors with curated 
 
 The web surface now follows the same evidence-first hierarchy as the GitHub profile while remaining useful on its own:
 
-`Founder positioning → FDR flagship → Engineering depth → Product R&D → Portfolio maturity → Operational evidence → Operating model → Professional engagement → Public/private boundary → Contact`
+`Professional positioning → FDR flagship → Engineering depth → Product R&D → Portfolio maturity → Operational evidence → Operating model → Professional engagement → Public/private boundary → Contact`
 
 That sequence is intentional. It answers **who builds the systems, what the strongest proof is, what engineering depth exists, how mature the surrounding products are and where the approach is professionally useful** before asking the visitor to make contact.
 
