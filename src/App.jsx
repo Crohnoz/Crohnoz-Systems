@@ -36,7 +36,7 @@ const copy = {
     heroTitle: "Sistemas construidos alrededor de operaciones reales.",
     heroText:
       "Diseño productos, backends y herramientas operacionales partiendo desde el problema, las reglas del dominio y la evidencia. Esta superficie pública muestra qué puedo demostrar sin exponer implementación privada ni datos sensibles.",
-    founder: "Founder · Product & Systems Architect",
+    profile: "Software Developer · Product & Systems",
     location: "Chile → Global",
     principle: "Evidence, not claims",
     openEvidence: "Explorar evidencia pública",
@@ -93,7 +93,7 @@ const copy = {
     heroTitle: "Systems built around real operations.",
     heroText:
       "I design products, backends and operational tools starting from the problem, domain rules and evidence. This public surface shows what can be demonstrated without exposing private implementation or sensitive data.",
-    founder: "Founder · Product & Systems Architect",
+    profile: "Software Developer · Product & Systems",
     location: "Chile → Global",
     principle: "Evidence, not claims",
     openEvidence: "Explore public evidence",
@@ -520,7 +520,7 @@ export default function App() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-white/70">
-              {[t.founder, t.location, t.principle].map((item) => (
+              {[t.profile, t.location, t.principle].map((item) => (
                 <span key={item} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
                   {item}
                 </span>
