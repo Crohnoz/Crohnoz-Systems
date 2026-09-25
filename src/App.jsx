@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const LINKS = {
   website: "https://crohnozlabs.cl",
-  profile: "https://crohnozlabs.cl/profile",
+  profile: "https://crohnozlabs.cl/enrique-flores",
   github: "https://github.com/Crohnoz",
   evidence: "https://github.com/Crohnoz/Crohnoz/tree/main/evidence",
   fdrCase: "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/fdr.md",
