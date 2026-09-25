@@ -22,7 +22,7 @@
 
 ## Portfolio role
 
-Crohnoz Systems is the standalone public presentation layer for selected work by **Enrique Flores / Crohnoz Labs**. It is deliberately different from a source-code catalog: the goal is to explain **what operational problem exists, how the system is shaped, which engineering decisions matter and what can be inspected safely**.
+Crohnoz Systems is the standalone public presentation layer for selected engineering work within **Crohnoz Labs**. It is deliberately different from a source-code catalog: the goal is to explain **what operational problem exists, how the system is shaped, which engineering decisions matter and what can be inspected safely**.
 
 > **Evidence is public by design. Implementation is private by default.**
 
