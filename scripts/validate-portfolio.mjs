@@ -26,7 +26,7 @@ for (const value of [
   "L1 · Prototype / R&D",
   "https://github.com/Crohnoz/Crohnoz/blob/main/evidence/fdr.md",
   "https://crohnozlabs.cl/demos/fdr-centro-podologico",
-  "https://crohnozlabs.cl/profile",
+  "https://crohnozlabs.cl/enrique-flores",
 ]) {
   requireText(app, value, "App contract");
 }
